@@ -1,0 +1,47 @@
+<div class="container" *ngIf="!isAuthenticated">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Welcome to Writer's Desk.</h3>
+      All writers writeups are accepted here.
+      <!-- <h3>Sign Up to access poetry.</h3> -->
+      <hr />
+      <img src="assets/images/writerdesk.jpg" class="img-responsive" />
+      <hr />
+      <!-- <div class="row">
+              <div class="col-xs-12" *ngIf="isSubmitted">
+                  Name: {{ user.name }}
+              </div>
+          </div> -->
+      <!-- <div class="row">
+          <div class="col-xs-12">
+            <span *ngFor="let i of Repdata; let ind = index"></span>
+          </div>
+        </div> -->
+      <a class="btn btn-primary" routerLink="signup">Sign Up</a> &nbsp;
+      <a class="btn btn-success" routerLink="login">Login</a>
+      <!-- <button type="button" class="btn btn-primary" routerLink="signup" (click)="onRedirect()">Sign Up</button> -->
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <span
+          *ngIf="isSubmitted"
+          class="alert alert-success"
+          style="margin-left: 150px; margin-top: 20px"
+        >
+          Sign Up successfull!!
+        </span>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+<div class="container" *ngIf="isAuthenticated">
+  <div class="row">
+    <div class="col-md-3">Working</div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

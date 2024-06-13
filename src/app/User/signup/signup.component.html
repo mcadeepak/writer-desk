@@ -1,0 +1,186 @@
+<div class="row" id="box">
+  <div class="col-md-12">
+    <div class="row formstyle">
+      <h3 style="text-align: center; font-weight: bold">Sign Up</h3>
+    </div>
+    <div class="row beautify">
+      <form (ngSubmit)="onSubmit()" [formGroup]="userSignupForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="name"
+            required
+          />
+          <div
+            *ngIf="
+              userSignupForm.get('name').invalid &&
+              userSignupForm.get('name').touched
+            "
+            class="text-danger"
+          >
+            <span *ngIf="userSignupForm.get('name').errors?.['required']"
+              >Name is required.</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Contact">Contact</label>
+          <input
+            type="tel"
+            id="contact"
+            class="form-control"
+            formControlName="contact"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              userSignupForm.get('contact').invalid &&
+              userSignupForm.get('contact').touched
+            "
+          >
+            <span>{{ userSignupForm.get("contact").focus }}</span>
+            <span *ngIf="userSignupForm.get('contact').hasError('required')"
+              >Contact is required.</span
+            >
+            <span *ngIf="userSignupForm.get('contact').hasError('minlength')">
+              The minimum length for this field is
+              {{
+                userSignupForm.get("contact").errors.minlength.requiredLength
+              }}
+              characters.</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Email">Email</label>
+          <input
+            type="text"
+            id="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              userSignupForm.get('email').invalid &&
+              userSignupForm.get('email').touched
+            "
+            class="text-danger"
+          >
+            <span *ngIf="userSignupForm.get('email').errors?.['required']"
+              >Email is required.</span
+            >
+            <span *ngIf="userSignupForm.get('email').hasError('email')">
+              This is not a valid email address</span
+            >
+          </div>
+        </div>
+        <label for="Contact">Gender:</label> <br />
+        <div
+          class="form-group"
+          style="display: inline-block"
+          *ngFor="let gender of genders"
+        >
+          <input
+            type="radio"
+            formControlName="gender"
+            [value]="gender"
+            required
+          />
+          {{ gender }} &nbsp;
+        </div>
+        <div class="form-group">
+          <label for="username">UserName</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            formControlName="username"
+          />
+          <div
+            *ngIf="
+              userSignupForm.get('username').invalid &&
+              userSignupForm.get('username').touched
+            "
+            class="text-danger"
+          >
+            <span *ngIf="userSignupForm.get('username').errors?.['required']"
+              >Username is required.</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <div
+            *ngIf="
+              userSignupForm.get('password').invalid &&
+              userSignupForm.get('password').touched
+            "
+            class="text-danger"
+          >
+            <span *ngIf="userSignupForm.get('password').errors?.['required']"
+              >Password is required.</span
+            >
+            <span *ngIf="userSignupForm.get('password').hasError('minlength')">
+              The minimum length for this field is
+              {{
+                userSignupForm.get("password").errors.minlength.requiredLength
+              }}
+              characters.</span
+            >
+          </div>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+          <!-- <button (click)="onLoginPage()">Login</button> -->
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <span *ngIf="!userSignupForm.valid">
+    {{ userSignupForm.get("contact").focus() }}
+  </span> -->
+  <!-- <div class="container-fluid">
+            <form (ngSubmit)="onSubmit()" FormGroup="userSignup">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" name="name" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="Contact">Contact</label>
+                    <input type="tel" id="contact" class="form-control" name="contact" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="text" id="email" class="form-control" name="email" ngModel>
+                </div>
+                <label for="Contact">Gender:</label>
+                <div class="form-group" *ngFor="let gender of genders">
+                    <input type="radio" name="gender" ngModel [value]="gender" required> {{gender}}
+                </div>
+                <div class="form-group">
+                    <label for="username">UserName</label>
+                    <input type="text" id="username" class="form-control" name="username" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" name="password" ngModel>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="confirmPass">Confirm Password</label>
+                    <input type="password" id="confirmPass" class="form-control" name="confirmPass" ngModel>
+                </div> --
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+            </form>
+          </div>    -->
+</div>

@@ -1,0 +1,85 @@
+<body style="background-size: cover; background-color: white">
+  <section style="overflow-x: hidden; overflow-y: hidden">
+    <md-spinner
+      *ngIf="inProgress"
+      mode="indeterminate"
+      class="spinner"
+    ></md-spinner>
+
+    <div class="row">
+      <!-- <div class="col-md-4"></div> -->
+      <div class="col-lg-5" id="box">
+        <div class="row" style="background-color: #00b0ff; color: white">
+          <h3 style="text-align: center; font-weight: bold">Login</h3>
+        </div>
+        <div class="row">
+          <!-- <hr> -->
+          <form (ngSubmit)="submitOtp()">
+            <div class="beautify" *ngIf="!otpGenerate">
+              <!-- <label for="password">Enter Employee Id</label> -->
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="employeeId"
+                  [(ngModel)]="employeeId"
+                  placeholder="Enter Employee Id"
+                />
+                <span class="input-group-btn">
+                  <button
+                    class="btn btn-primary"
+                    (click)="sendOtp()"
+                    type="button"
+                  >
+                    Send OTP
+                  </button>
+                </span>
+              </div>
+              <!-- <input type="text" formControlName="username" class="form-control" />
+        <button type="button" class="btn" formControlName="sendOTP"></button> -->
+            </div>
+            <div class="beautify" *ngIf="otpGenerate">
+              <div class="input-group">
+                <input
+                  type="password"
+                  name="otp"
+                  [(ngModel)]="otp"
+                  class="form-control"
+                  placeholder="Enter OTP"
+                />
+                <span class="input-group-btn">
+                  <button
+                    class="btn btn-primary"
+                    type="submit"
+                    (click)="submitOtp()"
+                  >
+                    Submit
+                  </button>
+                </span>
+                <span class="input-group-btn" *ngIf="resendOtp">
+                  <button
+                    class="btn btn-success"
+                    type="submit"
+                    (click)="resendClick()"
+                  >
+                    Resend OTP
+                  </button>
+                </span>
+              </div>
+            </div>
+            <!-- <div class=" beautify text-center">
+        <button class="btn btn-primary" type="submit" (click)="submitOtp()">Submit</button>
+        </div> -->
+
+            <div *ngIf="errorMessage" style="margin-top: 7px">
+              <span style="color: red"> {{ errorMsg }} </span>
+            </div>
+            <div *ngIf="showMessage" style="margin-top: 7px">
+              <span style="color: green"> {{ successMsg }} </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>

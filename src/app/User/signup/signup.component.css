@@ -1,0 +1,17 @@
+#box {
+  border: 1px gray solid;
+  margin-top: 50px;
+}
+
+.beautify {
+  padding: 10px;
+}
+
+.formstyle {
+  background-color: #045faa;
+  color: white;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
